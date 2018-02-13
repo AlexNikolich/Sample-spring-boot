@@ -1,0 +1,26 @@
+@SpringBootApplication
+public class JarToWarApplication extends SpringBootServletInitializer{
+
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(JarToWarApplication.class);
+	}
+	
+	public static void main(String[] args) {
+		SpringApplication.run(JarToWarApplication.class, args);
+	}
+}
+----------------------------------------------------------------
+
+This what you should do:
+
+0. pom.xml <packaging>war</packaging>
+1.extends SpringBootServletInitializer (war file must have Servlet)
+2.Build new configure
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(JarToWarApplication.class);
+	}
+3.maven => install
+4.maven => update
+5.export => war
